@@ -13,7 +13,7 @@ export const profile = {
 };
 
 export const stats = [
-  { value: '3+', label: 'Years in web development' },
+  { value: '4+', label: 'Years in web development' },
   { value: '6', label: 'Cabinetry eCommerce projects' },
   { value: 'Magento 2', label: 'Backend specialist' },
   { value: 'BCA', label: 'KSV University, 2021' },

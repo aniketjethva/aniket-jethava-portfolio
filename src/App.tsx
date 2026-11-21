@@ -57,6 +57,7 @@ function Typewriter() {
 export default function App() {
   const [active, setActive] = useState('home');
   const [progress, setProgress] = useState(0);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -87,9 +88,12 @@ export default function App() {
       <header>
         <div className="wrap">
           <a className="logo" href="#home">{profile.name}</a>
-          <nav>
+          <button className="burger" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+            <span className={open ? 'x' : ''} />
+          </button>
+          <nav className={open ? 'open' : ''}>
             {sections.map(([id, label]) => (
-              <a key={id} href={`#${id}`} className={active === id ? 'on' : ''}>{label}</a>
+              <a key={id} href={`#${id}`} className={active === id ? 'on' : ''} onClick={() => setOpen(false)}>{label}</a>
             ))}
           </nav>
         </div>

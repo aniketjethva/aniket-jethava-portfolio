@@ -93,9 +93,6 @@ h2{background:linear-gradient(90deg,#fff,#86efac);-webkit-background-clip:text;b
 
 /* ---------- Font effects ---------- */
 .hero h1{animation:shine 6s linear infinite}
-.hero h1 .ch{display:inline-block;animation:letter .8s cubic-bezier(.2,.8,.2,1) both;transition:transform .25s,text-shadow .25s}
-.hero h1 .ch:hover{transform:translateY(-10px) scale(1.08);-webkit-text-fill-color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,.8)}
-@keyframes letter{from{opacity:0;transform:translateY(40px) rotate(6deg);filter:blur(12px)}to{opacity:1;transform:none;filter:none}}
 .tag span{background:linear-gradient(90deg,#22c55e,#bbf7d0,#22c55e);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .8s both,shine 4s linear infinite;text-shadow:none}
 .tag b{color:var(--ac);-webkit-text-fill-color:var(--ac);text-shadow:0 0 12px rgba(34,197,94,.9);margin:0 10px}
 .typed{font:500 1.15rem ui-monospace,Menlo,monospace;color:var(--mu);margin-bottom:12px;min-height:1.8em;animation:up .9s .5s both}
@@ -113,3 +110,55 @@ h2.in::after{width:72px}
 .grid h3,.job small{text-shadow:0 0 14px rgba(34,197,94,.45)}
 .job h3{transition:color .25s,letter-spacing .25s}.job:hover h3{color:#86efac;letter-spacing:.01em}
 .lead{transition:color .3s}.card:hover .lead{color:var(--tx)}
+
+/* Name: clean solid text, simple fade-in, no hover effect */
+.hero h1{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--tx);-webkit-text-fill-color:var(--tx);animation:up .9s .1s both;text-shadow:0 0 40px rgba(34,197,94,.18)}
+.hero h1 i{-webkit-text-fill-color:var(--ac);color:var(--ac)}
+
+
+/* ---------- Responsive ---------- */
+img,svg,video{max-width:100%}
+.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.stats{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.burger{display:none;background:none;border:1px solid var(--bd);border-radius:8px;width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{content:"";display:block;width:20px;height:2px;background:var(--tx);border-radius:2px;transition:transform .3s,background .3s;position:relative}
+.burger span::before{position:absolute;top:-6px}.burger span::after{position:absolute;top:6px}
+.burger span.x{background:transparent}.burger span.x::before{transform:translateY(6px) rotate(45deg)}.burger span.x::after{transform:translateY(-6px) rotate(-45deg)}
+@media (min-width:1600px){.wrap{max-width:1360px}html{font-size:17px}}
+@media (max-width:1024px){
+  .hero .code{width:70%;right:-18%;opacity:.35}
+  .hero::after{width:360px;height:360px}
+}
+@media (max-width:900px){
+  header .wrap{flex-wrap:nowrap}
+  .burger{display:flex}
+  nav{position:fixed;top:calc(64px + env(safe-area-inset-top,0px));left:0;right:0;flex-direction:column;gap:0;padding:6px 24px 18px;background:rgba(7,7,10,.97);border-bottom:1px solid var(--bd);backdrop-filter:blur(12px);transform:translateY(-12px);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility .3s}
+  nav.open{transform:none;opacity:1;visibility:visible}
+  nav a{padding:14px 0;border-bottom:1px solid var(--bd);font-size:1.05rem}
+  nav a.on{border-bottom-color:var(--ac)}
+  .hero{min-height:auto;padding:70px 0 60px}
+  .hero .code{width:110%;right:-45%;top:2%;opacity:.22;font-size:11px}
+  .hero::after{right:-10%;top:5%}
+  section.s{padding:64px 0}
+}
+@media (max-width:600px){
+  .wrap{padding:0 18px}
+  .logo{font-size:1.25rem}
+  .hero{padding:48px 0 44px}
+  .hero h1{font-size:clamp(2.3rem,12.5vw,3.4rem)}
+  .tag{font-size:1.05rem}.tag b{margin:0 4px}
+  .typed{font-size:.95rem;min-height:3.4em}
+  .quote{font-size:1rem}
+  .btns{gap:12px}.btn{padding:12px 20px;flex:1 1 auto;text-align:center}
+  .soc{gap:16px 22px}
+  h2{font-size:1.75rem}
+  .lead{font-size:1rem}
+  .stats{grid-template-columns:1fr 1fr}.stats b{font-size:1.5rem}
+  .card{padding:18px}
+  .tl{padding-left:22px;gap:24px}.job::before{left:-30px}
+  .job h3{font-size:1.05rem}
+  .cta .btn{width:100%;word-break:break-all}
+}
+@media (max-width:360px){.stats{grid-template-columns:1fr}.btn{width:100%}}
+@media (max-height:480px) and (orientation:landscape){.hero{padding:40px 0}}
+@media (hover:none){.card:hover,.btn:hover,.soc a:hover,.chips span:hover{transform:none;box-shadow:none}}
